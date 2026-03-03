@@ -91,4 +91,4 @@ STEP IT Academy
 
 ## Project Presentation
 
-[Download Presentation](Secure-Corporate-IT-Infrastructure-Diploma.pptx.pdf)
+[Download Presentation](Secure-Corporate-IT-Infrastructure-Diploma.pdf)
