@@ -77,6 +77,48 @@ This diploma project demonstrates the design and implementation of a secure ente
 - Implemented failover and redundancy mechanisms
 
 ---
+---
+
+## Monitoring & Detection Architecture
+
+The infrastructure includes centralized visibility and event correlation:
+
+- Log Sources:
+  - Windows Event Logs (Domain Controller, Servers)
+  - Palo Alto Firewall logs
+  - Linux system logs
+  - VPN connection logs
+
+- Wazuh SIEM:
+  - Centralized log aggregation
+  - Event correlation
+  - Suspicious activity detection
+  - Real-time alert generation
+
+- Zabbix Monitoring:
+  - Infrastructure health monitoring
+  - Service availability checks
+  - Resource utilization tracking
+
+---
+
+## Skills Demonstrated
+
+- Enterprise network architecture design
+- Firewall High Availability deployment
+- Site-to-Site VPN configuration
+- Active Directory security hardening
+- Log collection and SIEM integration
+- Infrastructure monitoring implementation
+- Patch management strategy
+- Identity and access control enforcement
+- Hybrid Windows/Linux administration
+- Security documentation and risk-oriented design
+
+---
+
+## Repository Structure
+
 
 ## Architecture Diagram
 
