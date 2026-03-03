@@ -46,6 +46,6 @@ The network architecture includes:
 - Infrastructure monitoring (Zabbix)  
 - Patch management system (ManageEngine)  
 
-Topology diagram is available in this repository.
- A computer network diagram with blue lines and white text
+## Architecture Diagram
+
 ![Network Topology](topology.png)
