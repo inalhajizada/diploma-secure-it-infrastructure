@@ -91,4 +91,4 @@ STEP IT Academy
 
 ## Project Presentation
 
-[Download Presentation](Secure-Corporate-IT-Infrastructure-Diploma.pdf)
+[Download Presentation](https://raw.githubusercontent.com/inalhajizada/diploma-secure-it-infrastructure/main/Secure-Corporate-IT-Infrastructure-Diploma.pdf)
