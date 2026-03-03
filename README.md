@@ -1,51 +1,90 @@
 # Secure Corporate IT Infrastructure with Centralized Monitoring
 
+## Professional Summary
+
+Enterprise-level secure IT infrastructure project demonstrating High Availability firewall deployment, IPSec VPN architecture, centralized SIEM monitoring, Active Directory hardening, patch management, and VLAN-based network segmentation within a hybrid Windows/Linux environment.
+
+---
+
 ## Project Overview
-This diploma project demonstrates the design and implementation of a secure enterprise IT infrastructure with centralized monitoring, high availability, and security controls.
+
+This diploma project demonstrates the design and implementation of a secure enterprise IT infrastructure with centralized monitoring, high availability, and layered security controls across multiple network segments and branch offices.
+
+---
 
 ## Network Architecture
-- Palo Alto Firewall (Active/Passive HA)
-- IPSec VPN tunnels between branches
-- VLAN segmentation
+
+- Palo Alto Firewall (Active/Passive High Availability)
+- IPSec VPN tunnels between headquarters and branch offices
+- VLAN-based network segmentation
 - Core & Branch switches (EtherChannel, trunking)
 - DHCP configuration
+- Hybrid Windows & Linux infrastructure
+
+---
 
 ## Security Implementation
+
 - IPSec VPN with IKE & Crypto profiles
-- Wazuh SIEM integration (Syslog from firewall)
-- Zabbix infrastructure monitoring
-- Active Directory domain environment
-- LAPS for local administrator password management
-- Fine-Grained Password Policies
+- Centralized log collection via Wazuh SIEM (Syslog integration)
+- Infrastructure monitoring with Zabbix
+- Active Directory domain deployment
+- LAPS implementation for local administrator password rotation
+- Fine-Grained Password Policies (FGPP)
 - Patch management via ManageEngine Desktop Central
 
-## Additional Services
-- Nextcloud (Private Cloud)
-- Mattermost + LDAP integration
+---
+
+## Additional Enterprise Services
+
+- Nextcloud (Private Cloud Deployment)
+- Mattermost with LDAP integration
 - 3CX IP Telephony
-- Backup of network device configurations
+- Automated backup of network device configurations
 
-## High Availability
+---
+
+## High Availability Design
+
+- Active/Passive Palo Alto HA cluster
 - HA1 and HA2 synchronization
-- Link & path monitoring
-- Automatic failover between Active and Passive firewall
+- Link and path monitoring
+- Automatic failover mechanism
+- Resilient branch-to-headquarters connectivity
 
-## Author
-Inal Hajizada
-STEP IT Academy
+---
 
-## Architecture Diagram
+## Security Hardening Measures
 
-The network architecture includes:
+- Network segmentation using VLANs
+- Controlled inter-zone firewall policies
+- Encrypted site-to-site VPN communication
+- Centralized monitoring and alerting
+- Password complexity enforcement
+- Endpoint patching and vulnerability mitigation
+- Administrative privilege protection via LAPS
 
-- Core network with VLAN segmentation  
-- Palo Alto Firewall in Active/Passive High Availability  
-- IPSec VPN tunnels between headquarters and branch offices  
-- Windows Server with Active Directory  
-- Centralized logging (Wazuh SIEM)  
-- Infrastructure monitoring (Zabbix)  
-- Patch management system (ManageEngine)  
+---
+
+## Technical Highlights
+
+- Deployed enterprise-grade firewall HA cluster
+- Designed secure site-to-site VPN architecture
+- Implemented centralized SIEM logging
+- Hardened Active Directory environment
+- Integrated Linux systems into AD domain
+- Designed monitoring and patch management workflow
+- Implemented failover and redundancy mechanisms
+
+---
 
 ## Architecture Diagram
 
 ![Network Topology](topology.png)
+
+---
+
+## Author
+
+**Inal Hajizada**  
+STEP IT Academy
