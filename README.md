@@ -88,3 +88,7 @@ This diploma project demonstrates the design and implementation of a secure ente
 
 **Inal Hajizada**  
 STEP IT Academy
+
+## Project Presentation
+
+[Download Presentation](Secure-Corporate-IT-Infrastructure-Diploma.pptx)
