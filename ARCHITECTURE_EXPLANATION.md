@@ -1,77 +1,245 @@
-# Network Architecture Explanation
+# Enterprise Security Architecture – Technical Deep Dive
 
-## Design Philosophy
+## 1. Architecture Goals
 
-The infrastructure was designed following enterprise security principles:
+The infrastructure was designed to simulate a real enterprise environment with:
 
-- Defense in Depth
-- Least Privilege
-- Segmentation
 - High Availability
-- Centralized Monitoring
+- Secure inter-branch connectivity
+- Centralized monitoring
+- Active Directory hardening
+- Privilege protection
+- Patch & vulnerability management
+
+The primary objective was to eliminate single points of failure while implementing layered security controls.
 
 ---
 
-## Why High Availability?
+# 2. Perimeter Security Layer
 
-The Active/Passive Palo Alto cluster eliminates single points of failure.
+## Palo Alto Active/Passive HA Cluster
 
-If the primary firewall fails, the passive device automatically becomes active, ensuring continuous network operation.
+The main office uses two Palo Alto firewalls configured in Active/Passive mode.
 
----
+### HA Design Components
 
-## Why VLAN Segmentation?
+- HA1 – Control link (heartbeat, state monitoring)
+- HA2 – Session synchronization
+- Link monitoring
+- Path monitoring
 
-VLANs isolate:
+If:
+- Active firewall fails
+- Interface cable disconnects
+- Critical path becomes unreachable
 
-- User networks
-- Server infrastructure
-- Management systems
-- Branch connections
+The passive device automatically becomes active.
 
-This prevents lateral movement and limits attack surface.
-
----
-
-## Why IPSec Site-to-Site VPN?
-
-Branches communicate securely through encrypted tunnels over untrusted networks.
-
-This protects data from interception and tampering.
+This ensures business continuity.
 
 ---
 
-## Why Centralized Monitoring?
+# 3. Secure Branch Connectivity
 
-Wazuh SIEM collects logs from:
+## IPSec Site-to-Site VPN
 
-- Domain Controller
+Each branch is connected via IPSec VPN tunnels.
+
+### Security Design
+
+- IKE Phase 1 for authentication
+- IPSec Phase 2 for encryption
+- Crypto profiles defining:
+  - Encryption algorithm
+  - Authentication method
+  - DH group
+  - Lifetime
+
+Traffic between branches is encrypted over untrusted networks.
+
+This prevents:
+- Man-in-the-middle attacks
+- Traffic interception
+- Data tampering
+
+---
+
+# 4. Network Segmentation Strategy
+
+## VLAN-Based Segmentation
+
+The network is divided into logical segments:
+
+- User VLAN
+- Server VLAN
+- Management VLAN
+- Branch VLAN
+
+Benefits:
+
+- Reduces lateral movement
+- Limits blast radius
+- Enforces zone-based firewall policies
+
+Inter-VLAN traffic is controlled by the firewall.
+
+---
+
+# 5. Core Switching Layer
+
+Core and branch switches are configured with:
+
+- EtherChannel (Port-channel redundancy)
+- Trunk links
+- Access ports with security restrictions
+
+Additional controls:
+
+- Port Security
+- DHCP Snooping
+- STP configuration
+
+This protects against:
+
+- MAC flooding
+- Rogue DHCP attacks
+- Layer 2 manipulation
+
+---
+
+# 6. Identity & Access Management
+
+## Active Directory Deployment
+
+A centralized AD domain was deployed.
+
+Security hardening includes:
+
+- Organizational Unit structure per branch
+- Group Policy enforcement
+- Account lockout policies
+- Password complexity enforcement
+
+---
+
+## Fine-Grained Password Policies (FGPP)
+
+Different password policies were applied to specific groups.
+
+Example:
+- IT-Helpdesk: longer password lifetime
+- Standard users: stricter expiration
+
+This demonstrates granular identity control.
+
+---
+
+## LAPS Implementation
+
+Local Administrator Password Solution was deployed.
+
+Each domain-joined machine:
+
+- Has a unique local admin password
+- Password rotates automatically
+- Stored securely in AD attributes
+
+This mitigates:
+
+- Pass-the-Hash attacks
+- Lateral privilege escalation
+- Shared local admin abuse
+
+---
+
+# 7. Centralized Monitoring & SIEM
+
+## Wazuh SIEM
+
+Log sources:
+
 - Firewall
+- Domain Controller
 - Linux systems
-- VPN connections
+- VPN events
 
-This enables:
+Enables:
 
-- Suspicious activity detection
-- Centralized visibility
-- Faster incident response
-
----
-
-## Threat Mitigation Strategy
-
-The architecture reduces risk of:
-
-- Internal lateral movement
-- Privilege escalation
-- Unpatched vulnerabilities
-- VPN interception attacks
-- Service downtime
+- Correlation of events
+- Detection of brute-force attempts
+- Suspicious authentication monitoring
+- Policy violation tracking
 
 ---
 
-## Security Value of the Design
+# 8. Infrastructure Monitoring
 
-This topology simulates a real-world enterprise environment with layered protection, redundancy, and monitoring.
+## Zabbix
 
-It demonstrates practical security engineering, not just service deployment.
+Used for:
+
+- Availability monitoring
+- Performance metrics
+- Device health tracking
+
+Prevents silent failures.
+
+---
+
+# 9. Patch & Endpoint Management
+
+## ManageEngine Desktop Central
+
+Used for:
+
+- Patch deployment
+- Software management
+- Endpoint control
+- Centralized device management
+
+Reduces exposure to:
+
+- Known CVEs
+- Exploitable vulnerabilities
+- Outdated software risks
+
+---
+
+# 10. Linux Integration
+
+Linux systems were integrated into Active Directory.
+
+Benefits:
+
+- Centralized authentication
+- Unified identity management
+- Policy enforcement across OS platforms
+
+---
+
+# 11. Resilience & Defense-in-Depth Model
+
+This architecture demonstrates:
+
+Layer 1 – Perimeter security  
+Layer 2 – Encrypted site-to-site communication  
+Layer 3 – Network segmentation  
+Layer 4 – Identity hardening  
+Layer 5 – Endpoint patch management  
+Layer 6 – Centralized monitoring  
+
+No single control is trusted alone.
+
+---
+
+# 12. Real-World Security Value
+
+This project reflects enterprise-grade design principles:
+
+- High Availability
+- Secure remote connectivity
+- Identity-centric security
+- Continuous monitoring
+- Operational resilience
+
+It simulates a production-ready corporate IT environment.
