@@ -86,7 +86,9 @@ This diploma project demonstrates the design and implementation of a secure ente
 
 ## Author
 
-**Inal Hajizada**  
+**Inal Hajizada** 
+**Agayev Kamran**
+**Zeynalli Emil**
 STEP IT Academy
 
 
